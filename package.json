@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/sziccardi1998/NoteTakingApplication/issues"
   },
-  "homepage": "https://github.com/sziccardi1998/NoteTakingApplication#readme"
+  "homepage": "https://github.com/sziccardi1998/NoteTakingApplication#readme",
+  "devDependencies": {}
 }
