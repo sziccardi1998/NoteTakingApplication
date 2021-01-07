@@ -13,7 +13,8 @@ module.exports = function(app) {
     // API POST Requests
     // Should receive a new note to save on the request body, add it to the notes and trurn the new note to the client
     app.post("/api/notes", function(req, res) {
-        
+        notes.push(req.body);
+        return req.body;
     });
 
     // API DELETE Requests
