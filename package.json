@@ -10,5 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sziccardi1998/NoteTakingApplication.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/sziccardi1998/NoteTakingApplication/issues"
+  },
+  "homepage": "https://github.com/sziccardi1998/NoteTakingApplication#readme"
 }
