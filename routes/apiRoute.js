@@ -19,11 +19,12 @@ module.exports = function(app) {
         noteData = fs.readFileSync("./db/db.json", {encoding: "utf8",});
         console.log(noteData);
         // parse the data to get an array of objects
-        noteData = JSON.parse(noteData)
+        noteData = JSON.parse(noteData);
         // set new notes id
         for(let i = 0; i < noteData.length; i++) {
-            noteData[i].id = i;
+            noteData[i].id = i+1;
         }
+        req.body.id = noteData.length+1;
         // add the new note to the array of note objects
         noteData.push(req.body);
         // change to a string
@@ -38,6 +39,19 @@ module.exports = function(app) {
     // API DELETE Requests
     // Should recieve an id of the note to delete. Read all notes in the note file and remove the note with the given id.
     app.delete("/api/notes/:id", function(req, res){
-
+        // read in file
+        noteData = fs.readFileSync("./db/db.json", {encoding: "utf8",});
+        // convert data to array of objects
+        noteData = JSON.parse(noteData);
+        // check id of note to remove
+        console.log(req.params.id);
+        noteData = noteData.filter(note => note.id != req.params.id);
+        // make array into string
+        noteData = JSON.stringify(noteData);
+        // write notes back to file
+        fs.writeFile("./db/db.json", noteData, "utf8", function(err) {
+            if (err) throw err;
+        });
+        res.json(JSON.parse(noteData));
     });
 }
