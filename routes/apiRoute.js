@@ -14,6 +14,7 @@ module.exports = function(app) {
     // Should receive a new note to save on the request body, add it to the notes and trurn the new note to the client
     app.post("/api/notes", function(req, res) {
         notes.push(req.body);
+        res.json(true);
         return req.body;
     });
 
