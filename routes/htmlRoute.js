@@ -8,6 +8,6 @@ module.exports = function(app) {
 
     // * should return the index.html file
     app.get("*", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/notes.html"));
+        res.sendFile(path.join(__dirname, "../public/index.html"));
     })
 };

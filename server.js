@@ -1,5 +1,4 @@
 const express = require("express");
-// add routes for api and html
 
 const app = express();
 
