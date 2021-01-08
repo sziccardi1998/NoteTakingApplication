@@ -1,21 +1,36 @@
 // load data if needed
-var notes = require("../db/db.json");
-
+const fs = require("fs");
+let noteData = [];
 // routing
 
 module.exports = function(app) {
     // API GET Requests
     // Read db.json and reaturn all of the saved notes as JSON
     app.get("/api/notes", function(req, res) {
-        res.json(notes);
+        noteData = fs.readFileSync("./db/db.json", {encoding: "utf8",});
+        noteData = JSON.parse(noteData);
+        res.json(noteData);
     });
 
     // API POST Requests
     // Should receive a new note to save on the request body, add it to the notes and trurn the new note to the client
     app.post("/api/notes", function(req, res) {
-        notes.push(req.body);
-        res.json(true);
-        return req.body;
+        // read the file
+        noteData = fs.readFileSync("./db/db.json", {encoding: "utf8",});
+        console.log(noteData);
+        // parse the data to get an array of objects
+        noteData = JSON.parse(noteData)
+        // set new notes id
+        // req.body.id = something to figure out later
+        // add the new note to the array of note objects
+        noteData.push(req.body);
+        // change to a string
+        noteData = JSON.stringify(noteData);
+        // write the new note to the file
+        fs.writeFile("./db/db.json", noteData, "utf8", function(err) {
+            if (err) throw err;
+        });
+        res.json(JSON.parse(noteData));
     });
 
     // API DELETE Requests
