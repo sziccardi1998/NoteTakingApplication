@@ -21,7 +21,9 @@ module.exports = function(app) {
         // parse the data to get an array of objects
         noteData = JSON.parse(noteData)
         // set new notes id
-        // req.body.id = something to figure out later
+        for(let i = 0; i < noteData.length; i++) {
+            noteData[i].id = i;
+        }
         // add the new note to the array of note objects
         noteData.push(req.body);
         // change to a string
