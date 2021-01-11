@@ -31,7 +31,7 @@ If you have any questions regarding this application, I can be reached through m
 
 ## Links
 
-A link to the hosted application can be found at 
+A link to the hosted application can be found at https://tranquil-garden-34877.herokuapp.com/notes 
 
 ## License
 
